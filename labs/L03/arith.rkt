@@ -8,6 +8,5 @@
 (define (my-* a b)
   (cond
     [(zero? a) 0]
-    [(> a 0) (+ b (my-* (sub1 a) b))]))
-
-(check-expect (my-* 1 2) 2)
+    [(> a 0) (my-+ (my-* (sub1 a) b) b)]
+    [else (error "Unhandled case")]))
