@@ -1,12 +1,24 @@
-#lang htdp/bsl
+(check-expect (and true true) true)       ; Both true, evaluates to true
+(check-expect (and true false) false)     ; Short-circuits with false
+(check-expect (and false true) false)     ; Short-circuits with first false
+(check-expect (and true true true) true)  ; All true, evaluates to true
+(check-expect (and) true)                 ; Empty and, evaluates to true
 
-(define (my-+ a b)
-  (cond
-    [(zero? a) b]
-    [else (my-+ (sub1 a) (add1 b))]))
+(check-expect (or true false) true)       ; Short-circuits with true
+(check-expect (or false true) true)       ; Evaluates second, true
+(check-expect (or false false) false)     ; All false, evaluates to false
+(check-expect (or) false)                 ; Empty or, evaluates to false
 
-(define (my-* a b)
-  (cond
-    [(zero? a) 0]
-    [(> a 0) (my-+ (my-* (sub1 a) b) b)]
-    [else (error "Unhandled case")]))
+
+
+(check-expect (and true true) true)       ; Both true, evaluates to true
+(check-expect (and true false) false)     ; Short-circuits with false
+(check-expect (and false true) false)     ; Short-circuits with first false
+(check-expect (and true true true) true)  ; All true, evaluates to true
+(check-expect (and) true)                 ; Empty and, evaluates to true
+
+(check-expect (or true false) true)       ; Short-circuits with true
+(check-expect (or false true) true)       ; Evaluates second, true
+(check-expect (or false false) false)     ; All false, evaluates to false
+(check-expect (or) false)                 ; Empty or, evaluates to false
+
